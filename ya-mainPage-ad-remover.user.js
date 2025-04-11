@@ -15,6 +15,17 @@
 (function() {
     'use strict';
 
+    removeAds();
+
+    // Install Yandex Browser link deletor
+    setInterval(() => {
+        removeAds();
+    }, 10000); // 10 seconds
+})();
+
+function removeAds() {
+    'use strict';
+
     let bannerClass = document.querySelector('div.i-mini-bem');
     let bannerMarketClass = document.querySelector("div.body__feed-wrapper");
     let bannerId = document.getElementById('yandex-adv-sticky-banner-desktop');
@@ -39,4 +50,11 @@
         mainPageNewBanner.innerHTML = '';
         mainPageNewBanner.remove();
     }
-})();
+
+    let linkBroElements = document.querySelectorAll('.link-bro');
+    linkBroElements.forEach(el => {
+        if(el.textContent.includes('Браузер')) {
+            el.remove();
+        }
+    });
+}
