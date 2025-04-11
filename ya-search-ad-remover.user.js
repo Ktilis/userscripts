@@ -41,8 +41,11 @@
                 } else if (el.textContent.includes('реклама')) {
                     li.remove();
                 }
-            });
+            });            
         });
+
+        const downloadBrowserEl = document.querySelectorAll(".Distribution.HeaderDesktopActions-Distribution");
+        downloadBrowserEl.forEach(el => el.remove());
     }
 
     // Отслеживание рекламы справа от поиска
