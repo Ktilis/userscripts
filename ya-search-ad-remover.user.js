@@ -2,13 +2,16 @@
 // @name         Remove ads in Yandex Search
 // @name:ru      Удалить рекламу в поиске Яндекса
 // @namespace    http://tampermonkey.net/
-// @version      2025-01-02
+// @version      2025-04-13
 // @license      MIT
 // @description  This script removes all ads that masquerade as regular sites in Yandex Search.
 // @description:ru Этот скрипт удаляет всю рекламу, которая маскируется под обычные сайты в поиске Яндекса.
 // @author       Ktilis
 // @match        https://ya.ru/search*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=ya.ru
+// @homepageURL  https://github.com/Ktilis/userscripts
+// @downloadURL  https://raw.githubusercontent.com/Ktilis/userscripts/refs/heads/main/ya-search-ad-remover.user.js
+// @updateURL    https://raw.githubusercontent.com/Ktilis/userscripts/refs/heads/main/ya-search-ad-remover.user.js
 // @grant        none
 // ==/UserScript==
 
