@@ -18,6 +18,7 @@
 (function() {
     'use strict';
 
+    const wordList = ['реклама', 'промо'];
 
     // Функция для удаления элементов li, содержащих рекламу
     function removeAds() {
@@ -25,26 +26,32 @@
         const liElements = document.querySelectorAll('li');
 
         liElements.forEach(li => {
-            const divElements = li.querySelectorAll('div');
+            /*const divElements = li.querySelectorAll('div');
 
             divElements.forEach(el => {
-                if (el.textContent.includes('Реклама')) {
-                    li.remove();
-                } else if (el.textContent.includes('реклама')) {
-                    li.remove();
-                }
-            });
+                let str = el.textContent.toLowerCase();
+                wordList.forEach((v) => {
+                    if (str.includes(v)) {
+                        li.remove();
+                    }
+                });
+            });*/
 
 
             const spanElements = li.querySelectorAll('span');
 
             spanElements.forEach(el => {
-                if (el.textContent.includes('Реклама')) {
-                    li.remove();
-                } else if (el.textContent.includes('реклама')) {
-                    li.remove();
-                }
-            });            
+                if(el.classList.contains("OrganicTitleContentSpan")) return;
+
+                let str = el.textContent.toLowerCase();
+                wordList.forEach((v) => {
+                    if(str.includes(`<b>${v}</b>`)) return;
+
+                    if (str.includes(v)) {
+                        li.remove();
+                    }
+                });
+            });
         });
 
         const downloadBrowserEl = document.querySelectorAll(".Distribution.HeaderDesktopActions-Distribution");
