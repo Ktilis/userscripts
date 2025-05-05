@@ -2,7 +2,7 @@
 // @name         Remove ads in Yandex Search
 // @name:ru      Удалить рекламу в поиске Яндекса
 // @namespace    http://tampermonkey.net/
-// @version      2025-04-13
+// @version      2025-05-05
 // @license      MIT
 // @description  This script removes all ads that masquerade as regular sites in Yandex Search.
 // @description:ru Этот скрипт удаляет всю рекламу, которая маскируется под обычные сайты в поиске Яндекса.
@@ -150,6 +150,6 @@
     // Запускаем первоначальную проверку после задержки
     removeAds(); removeRightAdBlock();
     setTimeout(() => { removeAds(); removeRightAdBlock(); }, 1000);
-    setInterval(() => { removeAds(); removeRightAdBlock(); }, 10000);
+    //setInterval(() => { removeAds(); removeRightAdBlock(); }, 10000);
 
 })();
