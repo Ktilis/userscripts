@@ -2,7 +2,7 @@
 // @name         Remove Ad Banner on "Yandex" main page
 // @name:ru      Удалить баннер рекламы на главной странице "Яндекса"
 // @namespace    http://tampermonkey.net/
-// @version      2025-04-13
+// @version      2025-06-04
 // @description  Simple but effective banner remover
 // @description:ru Простой, но эффективный инструмент для удаления баннеров рекламы
 // @author       Ktilis
@@ -15,60 +15,64 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
-    'use strict';
+(function () {
+  "use strict";
 
+  removeAds();
+
+  setTimeout(() => {
     removeAds();
-
-    setTimeout(() => {
-        removeAds();
-    }, 500);
-    setInterval(() => {
-        removeAds();
-    }, 10000); // 10 seconds
+  }, 1000);
+  setInterval(() => {
+    removeAds();
+  }, 20000); // 20 seconds
 })();
 
 function removeAds() {
-    'use strict';
+  "use strict";
 
-    let bannerClass = document.querySelector('div.i-mini-bem');
-    let bannerMarketClass = document.querySelector("div.body__feed-wrapper");
-    let bannerId = document.getElementById('yandex-adv-sticky-banner-desktop');
-    let mainPageNewBanner = document.querySelector('aside.informers3').nextSibling.nextSibling;
-    let yaBrowserAd = document.querySelector(".headline").previousSibling;
+  let bannerClass = document.querySelector("div.i-mini-bem");
+  let bannerMarketClass = document.querySelector("div.body__feed-wrapper");
+  let bannerId = document.getElementById("yandex-adv-sticky-banner-desktop");
+  let mainPageNewBanner = document.querySelectorAll(".body__content>div");
+  let yaBrowserAd = document.querySelector(".headline").previousSibling;
 
-    if (bannerClass) {
-        bannerClass.innerHTML = '';
-        bannerClass.remove();
-    }
+  if (bannerClass) {
+    bannerClass.innerHTML = "";
+    bannerClass.remove();
+  }
 
-    if (bannerMarketClass) {
-        bannerMarketClass.innerHTML = '';
-        bannerMarketClass.remove();
-    }
+  if (bannerMarketClass) {
+    bannerMarketClass.innerHTML = "";
+    bannerMarketClass.remove();
+  }
 
-    if (bannerId) {
-        bannerId.innerHTML = '';
-        bannerId.remove();
-    }
+  if (bannerId) {
+    bannerId.innerHTML = "";
+    bannerId.remove();
+  }
 
-    if (mainPageNewBanner) {
-        mainPageNewBanner.innerHTML = '';
-        mainPageNewBanner.remove();
-    }
+  if (mainPageNewBanner.length !== 0) {
+    mainPageNewBanner.forEach((el) => {
+      if (!el.innerHTML.includes("_crpd")) return;
 
-    if(yaBrowserAd) {
-        yaBrowserAd.innerHTML = '';
-        yaBrowserAd.remove();
-    }
-
-    let linkBroElements = document.querySelectorAll('.link-bro');
-    linkBroElements.forEach(el => {
-        if(el.textContent.includes('Браузер')) {
-            el.remove();
-        }
+      el.innerHTML = "";
+      el.remove();
     });
+  }
 
-    let formEl = document.querySelector("form.i-mini-bem");
-    formEl.nextSibling.remove();
+  if (yaBrowserAd) {
+    yaBrowserAd.innerHTML = "";
+    yaBrowserAd.remove();
+  }
+
+  let linkBroElements = document.querySelectorAll(".link-bro");
+  linkBroElements.forEach((el) => {
+    if (el.textContent.includes("Браузер")) {
+      el.remove();
+    }
+  });
+
+  //let formEl = document.querySelector("form.i-mini-bem");
+  //formEl.nextSibling.remove();
 }
