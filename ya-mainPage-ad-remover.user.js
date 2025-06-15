@@ -39,6 +39,7 @@ function removeAds() {
   let bannerId = document.getElementById("yandex-adv-sticky-banner-desktop");
   let mainPageNewBanner = document.querySelectorAll(".body__content>div");
   let yaBrowserAd = document.querySelector(".headline").previousSibling;
+  let yaBrowserAd2 = document.querySelector(".Distribution");
 
   if (bannerClass) {
     bannerClass.innerHTML = "";
@@ -67,6 +68,11 @@ function removeAds() {
   if (yaBrowserAd) {
     yaBrowserAd.innerHTML = "";
     yaBrowserAd.remove();
+  }
+
+  if(yaBrowserAd2) {
+    yaBrowserAd2.innerHTML = "";
+    yaBrowserAd2.remove();
   }
 
   let linkBroElements = document.querySelectorAll(".link-bro");
