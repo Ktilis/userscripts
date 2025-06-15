@@ -2,12 +2,15 @@
 // @name         Remove Ad Banner on "Yandex" main page
 // @name:ru      Удалить баннер рекламы на главной странице "Яндекса"
 // @namespace    http://tampermonkey.net/
-// @version      2025-06-04
+// @version      2025-06-15
 // @description  Simple but effective banner remover
 // @description:ru Простой, но эффективный инструмент для удаления баннеров рекламы
 // @author       Ktilis
-// @match        https://ya.ru*
-// @match        https://yandex.ru/games*
+// @match        *://ya.ru/
+// @match        *://ya.ru/?*
+// @match        *://yandex.ru/games
+// @match        *://yandex.ru/games/
+// @match        *://yandex.ru/games?*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=ya.ru
 // @homepageURL  https://github.com/Ktilis/userscripts
 // @downloadURL  https://raw.githubusercontent.com/Ktilis/userscripts/refs/heads/main/ya-mainPage-ad-remover.user.js
